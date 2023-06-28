@@ -24,7 +24,7 @@ export default function Contact() {
         setIsError(false);
         setMsgWarning("")
         try {
-            let res = await fetch("http://localhost:3000/email", {
+            let res = await fetch("/email", {
                 method: 'POST',
                 body: formdata,
                 redirect: 'follow'
