@@ -438,4 +438,4 @@ export const emailTemplate = `<!doctype html>
     </table>
 </body>
 
-</html>`
+</html>`;

@@ -1,12 +1,11 @@
-import type { LoaderArgs } from "@remix-run/node"
+import type { LoaderArgs , ActionArgs } from "@remix-run/node"
+
+import { sendEmailContactForm } from "~/util/smtp";
 export async function loader({ request }: LoaderArgs) {
     return {
         msg: "Not Allowed"
     }
-};
-
-import type { ActionArgs, redirect } from "@remix-run/node"
-import { sendEmailContactForm } from "~/util/smtp";
+}
 export async function action({ request }: ActionArgs) {
     const formData = await request.formData();
     let email = formData.get("email")?.toString();
@@ -57,7 +56,7 @@ export async function action({ request }: ActionArgs) {
     }
 
     try {
-        await sendEmailContactForm(email, name, msg);   
+        await sendEmailContactForm({ email, name, msg });   
         return {
             status: 200,
             msg: "Thank you for your message! We have received it and will be in touch shortly."
@@ -68,4 +67,4 @@ export async function action({ request }: ActionArgs) {
             msg: "Something wrong, pleae try again."
         }
     }
-};
+}

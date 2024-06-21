@@ -1,7 +1,7 @@
 // root.tsx
-import React, { useContext, useEffect } from 'react'
-import { withEmotionCache } from '@emotion/react'
-import { ChakraProvider } from '@chakra-ui/react'
+import React, { useContext, useEffect } from "react";
+import { withEmotionCache } from "@emotion/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import {
   Links,
   LiveReload,
@@ -9,31 +9,31 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-} from '@remix-run/react'
-import { LinksFunction } from '@remix-run/node' // Depends on the runtime you choose
-import { ServerStyleContext, ClientStyleContext } from './context'
-import AppCss from "~/style/App.css"
-import slickCss from "slick-carousel/slick/slick.css"; 
+} from "@remix-run/react";
+import type { LinksFunction } from "@remix-run/node"; // Depends on the runtime you choose
+import { ServerStyleContext, ClientStyleContext } from "./context";
+import AppCss from "~/style/App.css";
+import slickCss from "slick-carousel/slick/slick.css";
 import slickTheme from "slick-carousel/slick/slick-theme.css";
 
 export let links: LinksFunction = () => {
   return [
-    { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-    { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
+    { rel: "preconnect", href: "https://fonts.googleapis.com" },
+    { rel: "preconnect", href: "https://fonts.gstatic.com" },
     {
-      rel: 'stylesheet',
-      href: AppCss
+      rel: "stylesheet",
+      href: AppCss,
     },
     {
-      rel: 'stylesheet',
-      href: slickCss
+      rel: "stylesheet",
+      href: slickCss,
     },
     {
-      rel: 'stylesheet',
-      href: slickTheme
+      rel: "stylesheet",
+      href: slickTheme,
     },
-  ]
-}
+  ];
+};
 
 interface DocumentProps {
   children: React.ReactNode;
@@ -66,7 +66,7 @@ const Document = withEmotionCache(
           {serverStyleData?.map(({ key, ids, css }) => (
             <style
               key={key}
-              data-emotion={`${key} ${ids.join(' ')}`}
+              data-emotion={`${key} ${ids.join(" ")}`}
               dangerouslySetInnerHTML={{ __html: css }}
             />
           ))}
@@ -82,7 +82,6 @@ const Document = withEmotionCache(
   }
 );
 
-
 export default function App() {
   return (
     <Document>
@@ -90,5 +89,5 @@ export default function App() {
         <Outlet />
       </ChakraProvider>
     </Document>
-  )
+  );
 }

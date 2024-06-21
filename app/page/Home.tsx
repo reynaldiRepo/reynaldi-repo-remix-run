@@ -1,5 +1,7 @@
-import { Fragment, RefObject, useRef } from "react";
-import Header, { MenuItem } from "~/components/Header";
+import type { RefObject} from "react";
+import { Fragment, useRef } from "react";
+import type { MenuItem } from "~/components/Header";
+import Header from "~/components/Header";
 import Hero from "~/components/Hero";
 import AboutMe from "~/components/AboutMe";
 import { Box } from "@chakra-ui/layout";
